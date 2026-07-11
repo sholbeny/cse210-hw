@@ -28,7 +28,7 @@ public class Journal
             entry.Display();
         }
 
-        Console.WriteLine($"Total entries: {_entries.Count}");
+        Console.WriteLine($"Total Entries: {_entries.Count}");
     }
 
     public void SaveToFile(string filename)
@@ -64,13 +64,19 @@ public class Journal
             {
                 string[] parts = line.Split("~|~");
 
-                if (parts.Length == 3)
+                if (parts.Length == 4)
                 {
                     string date = parts[0];
-                    string prompt = parts[1];
-                    string response = parts[2];
+                    string category = parts[1];
+                    string prompt = parts[2];
+                    string response = parts[3];
 
-                    Entry entry = new Entry(date, prompt, response);
+                    Entry entry = new Entry(
+                        date,
+                        prompt,
+                        response,
+                        category
+                    );
 
                     _entries.Add(entry);
                 }

@@ -1,5 +1,12 @@
 using System;
 
+/*
+Added elements: A word count feature and also a 
+feature that can offer a category for an entry
+Categories are: School, Family, Work, Church and Other
+Hopefully it works!
+*/
+
 class Program
 {
     static void Main(string[] args)
@@ -51,7 +58,9 @@ class Program
             }
             else if (userChoice == 5)
             {
-                Console.WriteLine("Thank you for using the Journal Program!");
+                Console.WriteLine(
+                    "Thank you for using the Journal Program!"
+                );
             }
             else
             {
@@ -64,7 +73,10 @@ class Program
 
     static void DisplayMenu()
     {
-        Console.WriteLine("Please select one of the following choices:");
+        Console.WriteLine(
+            "Please select one of the following choices:"
+        );
+
         Console.WriteLine("1. Write");
         Console.WriteLine("2. Display");
         Console.WriteLine("3. Save");
@@ -78,6 +90,7 @@ class Program
     {
         string prompt = promptGenerator.GetRandomPrompt();
 
+        Console.WriteLine();
         Console.WriteLine(prompt);
         Console.Write("> ");
 
@@ -85,16 +98,61 @@ class Program
 
         if (string.IsNullOrWhiteSpace(response))
         {
-            Console.WriteLine("The entry was not saved because it was empty.");
+            Console.WriteLine(
+                "The entry was not saved because it was empty."
+            );
+
             return;
         }
 
+        string category = ChooseCategory();
+
         string date = DateTime.Now.ToShortDateString();
 
-        Entry newEntry = new Entry(date, prompt, response);
+        Entry newEntry = new Entry(
+            date,
+            prompt,
+            response,
+            category
+        );
 
         journal.AddEntry(newEntry);
 
         Console.WriteLine("Your journal entry was added.");
+    }
+
+    static string ChooseCategory()
+    {
+        Console.WriteLine();
+        Console.WriteLine("Choose a category:");
+        Console.WriteLine("1. School");
+        Console.WriteLine("2. Family");
+        Console.WriteLine("3. Work");
+        Console.WriteLine("4. Church");
+        Console.WriteLine("5. Other");
+
+        Console.Write("Category: ");
+        string categoryChoice = Console.ReadLine();
+
+        if (categoryChoice == "1")
+        {
+            return "School";
+        }
+        else if (categoryChoice == "2")
+        {
+            return "Family";
+        }
+        else if (categoryChoice == "3")
+        {
+            return "Work";
+        }
+        else if (categoryChoice == "4")
+        {
+            return "Church";
+        }
+        else
+        {
+            return "Other";
+        }
     }
 }
