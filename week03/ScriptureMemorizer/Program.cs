@@ -8,7 +8,7 @@ class Program
         /*
          * Creativity and exceeding requirements:
          *
-         * I made the program contain a small library of five scriptures and had it 
+         * I made the program contain a small library of just 5 scriptures and had it 
          * randomly choose one whenever the program begins. It also selects words only
          * from those that are still visible, so it never wastes a turn by
          * selecting a word that has already been hidden.
