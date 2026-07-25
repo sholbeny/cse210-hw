@@ -4,7 +4,6 @@ class Program
 {
     static void Main(string[] args)
     {
-        // Create the first customer's address.
         Address address1 = new Address(
             "123 Main Street",
             "Minneapolis",
@@ -12,14 +11,15 @@ class Program
             "USA"
         );
 
-        // Create the first customer.
         Customer customer1 = new Customer(
             "Samantha Holbeny",
             address1
         );
 
-        // Create the first order.
-        Order order1 = new Order(customer1);
+        Order order1 = new Order(
+            customer1,
+            "1001"
+        );
 
         order1.AddProduct(new Product(
             "Wireless Mouse",
@@ -42,7 +42,6 @@ class Program
             2
         ));
 
-        // Create the second customer's address.
         Address address2 = new Address(
             "15 Hauptstrasse",
             "Heidelberg",
@@ -50,14 +49,15 @@ class Program
             "Germany"
         );
 
-        // Create the second customer.
         Customer customer2 = new Customer(
             "Anna Müller",
             address2
         );
 
-        // Create the second order.
-        Order order2 = new Order(customer2);
+        Order order2 = new Order(
+            customer2,
+            "1002"
+        );
 
         order2.AddProduct(new Product(
             "Travel Backpack",
@@ -73,18 +73,21 @@ class Program
             2
         ));
 
-        // Display the first order.
-        DisplayOrder(order1, 1);
-
-        // Display the second order.
-        DisplayOrder(order2, 2);
+        DisplayOrder(order1);
+        DisplayOrder(order2);
     }
 
-    static void DisplayOrder(Order order, int orderNumber)
+    static void DisplayOrder(Order order)
     {
         Console.WriteLine("========================================");
-        Console.WriteLine($"ORDER #{orderNumber}");
+        Console.WriteLine($"ORDER #{order.GetOrderNumber()}");
         Console.WriteLine("========================================");
+        Console.WriteLine();
+
+        Console.WriteLine(
+            $"Estimated Delivery: {order.GetDeliveryDays()} business days"
+        );
+
         Console.WriteLine();
 
         Console.WriteLine("PACKING LABEL");
@@ -92,11 +95,13 @@ class Program
         Console.Write(order.GetPackingLabel());
 
         Console.WriteLine();
+
         Console.WriteLine("SHIPPING LABEL");
         Console.WriteLine("----------------------------------------");
         Console.WriteLine(order.GetShippingLabel());
 
         Console.WriteLine();
+
         Console.WriteLine(
             $"TOTAL PRICE: ${order.CalculateTotalCost():F2}"
         );

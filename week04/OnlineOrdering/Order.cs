@@ -5,11 +5,23 @@ public class Order
 {
     private List<Product> _products;
     private Customer _customer;
+    private string _orderNumber;
+    private int _deliveryDays;
 
-    public Order(Customer customer)
+    public Order(Customer customer, string orderNumber)
     {
         _customer = customer;
+        _orderNumber = orderNumber;
         _products = new List<Product>();
+
+        if (_customer.IsInUSA())
+        {
+            _deliveryDays = 4;
+        }
+        else
+        {
+            _deliveryDays = 9;
+        }
     }
 
     public void AddProduct(Product product)
@@ -56,5 +68,15 @@ public class Order
     {
         return $"{_customer.GetName()}\n"
             + $"{_customer.GetAddress().GetFullAddress()}";
+    }
+
+    public string GetOrderNumber()
+    {
+        return _orderNumber;
+    }
+
+    public int GetDeliveryDays()
+    {
+        return _deliveryDays;
     }
 }
