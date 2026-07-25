@@ -7,11 +7,12 @@ class Program
     {
         List<Video> videos = new List<Video>();
 
-        // Create the first video.
         Video video1 = new Video(
             "How to Make Chocolate Chip Cookies",
             "Sammi's Kitchen",
-            625
+            625,
+            4325,
+            78124
         );
 
         video1.AddComment(new Comment(
@@ -31,11 +32,12 @@ class Program
 
         videos.Add(video1);
 
-        // Create the second video.
         Video video2 = new Video(
             "Top Places to Visit in Germany",
             "European Adventures",
-            842
+            842,
+            9850,
+            201563
         );
 
         video2.AddComment(new Comment(
@@ -60,11 +62,12 @@ class Program
 
         videos.Add(video2);
 
-        // Create the third video.
         Video video3 = new Video(
             "C# Classes for Beginners",
             "Coding Made Simple",
-            734
+            734,
+            7642,
+            145890
         );
 
         video3.AddComment(new Comment(
@@ -84,11 +87,12 @@ class Program
 
         videos.Add(video3);
 
-        // Create the fourth video.
         Video video4 = new Video(
             "Relaxing Piano Music",
             "Peaceful Sounds",
-            3600
+            3600,
+            18425,
+            512307
         );
 
         video4.AddComment(new Comment(
@@ -108,15 +112,17 @@ class Program
 
         videos.Add(video4);
 
-        // Display information about every video.
         foreach (Video video in videos)
         {
             Console.WriteLine("========================================");
             Console.WriteLine($"Title: {video.GetTitle()}");
             Console.WriteLine($"Author: {video.GetAuthor()}");
             Console.WriteLine($"Length: {video.GetLength()} seconds");
+            Console.WriteLine($"Views: {video.GetViews():N0}");
+            Console.WriteLine($"Likes: {video.GetLikes():N0}");
             Console.WriteLine($"Number of Comments: {video.GetCommentCount()}");
             Console.WriteLine();
+
             Console.WriteLine("Comments:");
 
             foreach (Comment comment in video.GetComments())
