@@ -9,7 +9,7 @@ class Program
         Creativity and Exceeding Requirements:
 
         I added a fourth mindfulness activity called the Gratitude Activity.
-        This activity helps the user focus on something positive in their life
+        It's made to help the user focus on something positive in their life
         by answering gratitude-related questions.
 
         The program also keeps track of how many activities the user completes
